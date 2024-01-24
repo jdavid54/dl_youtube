@@ -1,0 +1,188 @@
+Help on YouTube in module pytube.__main__ object:
+
+class YouTube(builtins.object)
+ |  YouTube(url: str, on_progress_callback: Optional[Callable[[Any, bytes, int], NoneType]] = None, on_complete_callback: Optional[Callable[[Any, Optional[str]], NoneType]] = None, proxies: Dict[str, str] = None, use_oauth: bool = False, allow_oauth_cache: bool = True)
+ |  
+ |  Core developer interface for pytube.
+ |  
+ |  Methods defined here:
+ |  
+ |  __eq__(self, o: object) -> bool
+ |      Return self==value.
+ |  
+ |  __init__(self, url: str, on_progress_callback: Optional[Callable[[Any, bytes, int], NoneType]] = None, on_complete_callback: Optional[Callable[[Any, Optional[str]], NoneType]] = None, proxies: Dict[str, str] = None, use_oauth: bool = False, allow_oauth_cache: bool = True)
+ |      Construct a :class:`YouTube <YouTube>`.
+ |      
+ |      :param str url:
+ |          A valid YouTube watch URL.
+ |      :param func on_progress_callback:
+ |          (Optional) User defined callback function for stream download
+ |          progress events.
+ |      :param func on_complete_callback:
+ |          (Optional) User defined callback function for stream download
+ |          complete events.
+ |      :param dict proxies:
+ |          (Optional) A dict mapping protocol to proxy address which will be used by pytube.
+ |      :param bool use_oauth:
+ |          (Optional) Prompt the user to authenticate to YouTube.
+ |          If allow_oauth_cache is set to True, the user should only be prompted once.
+ |      :param bool allow_oauth_cache:
+ |          (Optional) Cache OAuth tokens locally on the machine. Defaults to True.
+ |          These tokens are only generated if use_oauth is set to True as well.
+ |  
+ |  __repr__(self)
+ |      Return repr(self).
+ |  
+ |  bypass_age_gate(self)
+ |      Attempt to update the vid_info by bypassing the age gate.
+ |  
+ |  check_availability(self)
+ |      Check whether the video is available.
+ |      
+ |      Raises different exceptions based on why the video is unavailable,
+ |      otherwise does nothing.
+ |  
+ |  register_on_complete_callback(self, func: Callable[[Any, Optional[str]], NoneType])
+ |      Register a download complete callback function post initialization.
+ |      
+ |      :param callable func:
+ |          A callback function that takes ``stream`` and  ``file_path``.
+ |      
+ |      :rtype: None
+ |  
+ |  register_on_progress_callback(self, func: Callable[[Any, bytes, int], NoneType])
+ |      Register a download progress callback function post initialization.
+ |      
+ |      :param callable func:
+ |          A callback function that takes ``stream``, ``chunk``,
+ |           and ``bytes_remaining`` as parameters.
+ |      
+ |      :rtype: None
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  from_id(video_id: str) -> 'YouTube'
+ |      Construct a :class:`YouTube <YouTube>` object from a video id.
+ |      
+ |      :param str video_id:
+ |          The video id of the YouTube video.
+ |      
+ |      :rtype: :class:`YouTube <YouTube>`
+ |  
+ |  ----------------------------------------------------------------------
+ |  Readonly properties defined here:
+ |  
+ |  age_restricted
+ |  
+ |  caption_tracks
+ |      Get a list of :class:`Caption <Caption>`.
+ |      
+ |      :rtype: List[Caption]
+ |  
+ |  captions
+ |      Interface to query caption tracks.
+ |      
+ |      :rtype: :class:`CaptionQuery <CaptionQuery>`.
+ |  
+ |  channel_id
+ |      Get the video poster's channel id.
+ |      
+ |      :rtype: str
+ |  
+ |  channel_url
+ |      Construct the channel url for the video's poster from the channel id.
+ |      
+ |      :rtype: str
+ |  
+ |  description
+ |      Get the video description.
+ |      
+ |      :rtype: str
+ |  
+ |  embed_html
+ |  
+ |  fmt_streams
+ |      Returns a list of streams if they have been initialized.
+ |      
+ |      If the streams have not been initialized, finds all relevant
+ |      streams and initializes them.
+ |  
+ |  initial_data
+ |  
+ |  js
+ |  
+ |  js_url
+ |  
+ |  keywords
+ |      Get the video keywords.
+ |      
+ |      :rtype: List[str]
+ |  
+ |  length
+ |      Get the video length in seconds.
+ |      
+ |      :rtype: int
+ |  
+ |  metadata
+ |      Get the metadata for the video.
+ |      
+ |      :rtype: YouTubeMetadata
+ |  
+ |  rating
+ |      Get the video average rating.
+ |      
+ |      :rtype: float
+ |  
+ |  streaming_data
+ |      Return streamingData from video info.
+ |  
+ |  streams
+ |      Interface to query both adaptive (DASH) and progressive streams.
+ |      
+ |      :rtype: :class:`StreamQuery <StreamQuery>`.
+ |  
+ |  thumbnail_url
+ |      Get the thumbnail url image.
+ |      
+ |      :rtype: str
+ |  
+ |  vid_info
+ |      Parse the raw vid info and return the parsed result.
+ |      
+ |      :rtype: Dict[Any, Any]
+ |  
+ |  views
+ |      Get the number of the times the video has been viewed.
+ |      
+ |      :rtype: int
+ |  
+ |  watch_html
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  author
+ |      Get the video author.
+ |      :rtype: str
+ |  
+ |  publish_date
+ |      Get the publish date.
+ |      
+ |      :rtype: datetime
+ |  
+ |  title
+ |      Get the video title.
+ |      
+ |      :rtype: str
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __hash__ = None
