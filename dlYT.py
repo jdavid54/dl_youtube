@@ -17,10 +17,7 @@ def get_video_info(url):
     print(f"video name : {title}")
     print(f"reso : {resolution.resolution}")
     print(f"video size : {file_size / (1024 * 1024):.2f} MB")
-    return video, resolution, file_size
-
-def on_progress(chunk, file_handle, bytes_remaining):
-        progress_bar.update(len(chunk))
+    return resolution, file_size
 
 #download with progress bar
 def download_video(url, resolution, file_size):
@@ -29,10 +26,11 @@ def download_video(url, resolution, file_size):
     
     print(f"starting download ({resolution.resolution})...")
     
+    # progess bar
     progress_bar = tqdm(total=file_size, unit='B', unit_scale=True)
     def on_progress(chunk, file_handle, bytes_remaining):
         progress_bar.update(len(chunk))
-    stream.on_progress = on_progress
+    stream.on_progress = on_progress  # associate stream progress with tqdm progress bar
     
     chunk_size = 1024 * 1024
     num_chunks = file_size // chunk_size + 1
@@ -44,6 +42,7 @@ def download_video(url, resolution, file_size):
         headers = {"Range": bytes_range}
         response = requests.get(stream.url, headers=headers, stream=True)
         
+        #save chunk by chunk to file
         with open(f"{video.title[:20]}_{resolution.resolution}.mp4", "ab") as file:
             for chunk in response.iter_content(chunk_size=1024):
                 if chunk:
@@ -54,9 +53,11 @@ def download_video(url, resolution, file_size):
     progress_bar.close()
     print("complete download")
 
-url:str ="https://www.youtube.com/watch?v=........."   # put link video here
-video, resolution, file_size = get_video_info(url)
-#print(video, resolution, file_size)
+# url:str ="https://www.youtube.com/watch?v=l4SjSHlxXOQ"   # put link video here
+
+url:str ="https://www.youtube.com/watch?v=WOEO1UuCRcc"
+resolution, file_size = get_video_info(url)
+#print(resolution, file_size)
 
 print('Download ?')
 input()
