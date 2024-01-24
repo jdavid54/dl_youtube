@@ -54,9 +54,7 @@ def download_video(url, resolution, file_size):
     progress_bar.close()
     print("complete download")
 
-# url:str ="https://www.youtube.com/watch?v=l4SjSHlxXOQ"   # put link video here
-
-url:str ="https://www.youtube.com/watch?v=VonkoVZxHn4"
+url:str ="https://www.youtube.com/watch?v=........."   # put link video here
 video, resolution, file_size = get_video_info(url)
 #print(video, resolution, file_size)
 
